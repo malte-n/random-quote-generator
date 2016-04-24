@@ -13,7 +13,7 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 
 //all variables
 var clone = new Array(),
-	timeoutID;
+	intervalId;
 
 
 
@@ -22,6 +22,11 @@ function reset() {
     clone = quotes.slice();
 };
 
+//New qoute generated after timeout
+
+function refreshTimer() {
+	return intervalId  = setTimeout(printQuote, 30000);
+}
 
 //returns the randomly selected quote object
 //needs to return the object of i before splicing i from the array - how to do it?
@@ -66,9 +71,9 @@ function printQuote() {
 
 	document.getElementById('quote-box').innerHTML = message;
 	document.body.style.backgroundColor = backgroundRGB;
+	window.clearTimeout(intervalId);
+	refreshTimer();
 }
-
-
 
 
 
